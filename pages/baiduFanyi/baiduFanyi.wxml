@@ -8,8 +8,6 @@
     <van-tab title="日-汉" disabled>汉法</van-tab>
     <van-tab title="汉-法" disabled>汉法</van-tab>
     <van-tab title="德-法" disabled>汉法</van-tab>
-
-    
   </van-tabs>
   <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" custom-style="height: 150px;">
     <view wx:for="{{resultList}}" wx:for-item='item' wx:key='key' class='list'>
