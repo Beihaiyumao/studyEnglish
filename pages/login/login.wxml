@@ -1,0 +1,12 @@
+<view>
+  <image class='login_bg' src='/images/login/backgroud.png'></image>
+  <view class='login_form'>
+    <form class='form_conner'>
+      <image class='login_logo' src='/images/login/login.png '></image>
+      <input class="email" type='text' bindinput="inputName" placeholder='邮箱'></input>
+      <input class='password' password='true' bindinput="inputPassword" placeholder='密码'></input>
+      <button class='login_btn'bindtap='login'>登录</button>
+      <button class='regist_btn' bindtap='registerUser'>注册</button>
+    </form>
+  </view>
+</view>

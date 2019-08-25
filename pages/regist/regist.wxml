@@ -1,0 +1,14 @@
+<view>
+  <image class='regist_bg' src='/images/login/backgroud.png'></image>
+  <view class='login_form'>
+    <form class='form_conner'>
+      <image class='login_logo' src='/images/login/login.png '></image>
+      <input class='password' bindinput="email" placeholder='邮箱'></input>
+      <input class="email" bindinput='username' placeholder='用户名'></input>
+      <input class='password' password='true' bindinput="password" placeholder='密码'></input>
+      <input class='password' password='true' bindinput="tpassword" placeholder='确认密码'></input>
+      <button class='login_btn' bindtap='register'>注册</button>
+      <button class='resgin' bindtap='login'>登录</button>
+    </form>
+  </view>
+</view>

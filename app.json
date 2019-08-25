@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/logs/logs",
+    "pages/baiduFanyi/baiduFanyi",
+    "pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#C00000",
+    "navigationBarTitleText": "English",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index/indexOff.png",
+        "selectedIconPath": "images/index/indexOn.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/baiduFanyi/baiduFanyi",
+        "iconPath": "images/index/fanyiOff.png",
+        "selectedIconPath": "images/index/fanyiOn.png",
+        "text": "翻译"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "images/index/myOff.png",
+        "selectedIconPath": "images/index/myOn.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
+}
