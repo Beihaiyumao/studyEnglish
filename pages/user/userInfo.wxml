@@ -1,0 +1,15 @@
+<!--pages/user/userInfo.wxml-->
+
+<view class="pageHead">
+  <view class='user_top'>
+    <image class='user_image' src='/images/user/user_background.jpg' style='width:100%;'></image>
+    <view class='user_head' style='' bindtap='changeUserPic'>
+      <image src='{{headPhoto}}'></image>
+    </view>
+    <view class='userinfo_user' style='margin-top:60rpx;'>
+      <text>用户名</text>
+      <input placeholder='{{username}}' bindinput='username'></input>
+    </view>
+    <button class="user_end mt60" bindtap='saveChangeUserInfo'>保存修改</button>
+  </view>
+</view>

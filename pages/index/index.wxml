@@ -1,13 +1,41 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+<div class="box">
+<van-notice-bar
+  mode="closeable"
+  text="系统现在虽然不是很完善，但是我们一直都在努力，感谢您的大力支持。"
+/>
+  <div class="column">
+    <span class="item">
+      <view bindtap='turnSiJi'>
+        <view class="item">
+          <image class='bmip' mode='widthFix ' src='/images/index/siji.jpg ' mode='widthFix'></image>
+        </view>
+        <view class='bmif'>
+          <text type='' >四级戳这里</text>
+        </view>
+      </view>
+    </span>
+    <span class="item">
+      <view bindtap='turnLiuJi'>
+        <view class="item">
+          <image class='whrp' mode='widthFix ' src='/images/index/liuji.jpg ' mode='widthFix'></image>
+        </view>
+        <view class='whrf'>
+          <text type=''>六级戳这里</text>
+        </view>
+      </view>
+    </span>
+  </div>
+  <div class="column">
+    <span class="item">
+      <view>
+        <view class="item">
+          <image class='denp' mode='widthFix ' src='/images/index/weiwan.jpg ' mode='widthFix'></image>
+        </view>
+        <view class='denf'>
+          <text type=''>未完待续...</text>
+        </view>
+      </view>
+    </span>
+  </div>
+</div>

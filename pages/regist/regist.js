@@ -5,19 +5,10 @@ Page({
    * 初始化两个输入值
    */
   data: {
-    img: urlPath + "/user/getImgVerify",
     username: '',
     password: '',
     tpassword: '',
     email: '',
-    identifying: '',
-    hidden: true,
-    btnValue: '', //按钮显示
-    btnDisabled: false,
-    code: '', //用户输入的验证码
-    second: 60,
-    phone: '', //手机号
-    trueCode: '', //正确的验证码
   },
   //获取邮箱
   email: function(e) {
@@ -43,49 +34,7 @@ Page({
       tpassword: e.detail.value
     })
   },
-  //手机号输入
-  bindPhoneInput(e) {
-    console.log(e.detail.value);
-    var val = e.detail.value;
-    this.setData({
-      phone: val
-    })
-    if (val != '') {
-      this.setData({
-        hidden: false,
-        btnValue: '获取验证码'
-      })
-    } else {
-      this.setData({
-        hidden: true
-      })
-    }
-  },
-  //验证码输入
-  bindCodeInput(e) {
-    this.setData({
-      code: e.detail.value
-    })
-  },
-  //获取验证码
-  getCode: function() {
-    var that = this;
-    if (this.data.phone.length != 11) {
-      this.showErrorToastUtils("请输入正确的手机号");
-    } else {
-      wx.request({
-        url: urlPath + '/user/smsg?phone=' + this.data.phone,
-        method: 'POST',
-        success: function(e) {
-          that.timer();
-          console.log(e);
-          that.setData({
-              trueCode: e.data.msg,
-            })
-        }
-      })
-    }
-  },
+
   // 注册
   register: function() {
     var that = this;
@@ -150,15 +99,6 @@ Page({
 
     });
   },
-  //点击切换验证码
-  newPhoto: function(e) {
-    var that = this;
-    let num = Math.random();
-    var pic = urlPath + "/user/getImgVerify?" + num;
-    that.setData({
-      img: pic
-    })
-  },
   // 错误提示
   showErrorToastUtils: function(e) {
     wx.showModal({
@@ -172,33 +112,7 @@ Page({
       }
     })
   },
-  /**
-   * 时间
-   */
-  timer: function() {
-    let promise = new Promise((resolve, reject) => {
-      let setTimer = setInterval(
-        () => {
-          var second = this.data.second - 1;
-          this.setData({
-            second: second,
-            btnValue: second + '秒',
-            btnDisabled: true
-          })
-          if (this.data.second <= 0) {
-            this.setData({
-              second: 60,
-              btnValue: '获取验证码',
-              btnDisabled: false
-            })
-            resolve(setTimer)
-          }
-        }, 1000)
-    })
-    promise.then((setTimer) => {
-      clearInterval(setTimer)
-    })
-  },
+
   //检查用户输入
   checkUserInput: function() {
     var emailTrue = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;

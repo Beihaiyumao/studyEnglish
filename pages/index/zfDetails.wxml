@@ -1,0 +1,10 @@
+<!--pages/index/zfDetails.wxml-->
+<van-panel title="{{title}}" desc="{{introducer}}" use-footer-slot>
+  <view style='margin-left: 50rpx; margin-right:50rpx;margin-top:50rpx'>{{content}}</view>
+  <view slot="footer" wx:if="{{collectionState}}">
+    <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" color='#C00000' />
+  </view>
+  <view slot="footer" wx:if="{{!collectionState}}">
+    <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" />
+  </view>
+</van-panel>

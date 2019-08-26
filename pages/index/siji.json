@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "四级板块",
+  "usingComponents": {
+    "van-badge": "../../dist/badge/index",
+    "van-badge-group": "../../dist/badge-group/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-collapse": "../../dist/collapse/index",
+    "van-collapse-item": "../../dist/collapse-item/index"
+  },
+  "enablePullDownRefresh": true
+}

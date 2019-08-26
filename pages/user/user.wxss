@@ -1,1 +1,76 @@
 /* pages/user/user.wxss */
+.user_top{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.user_head{
+  position: absolute;
+  z-index: 1;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  
+
+}
+.user_head image{
+  width: 220rpx;
+  height: 220rpx;
+  margin-top: 100rpx;
+  border-radius: 90px;
+}
+.user_head text{
+  color: #ffffff;
+  text-align: center;
+  margin-top: 30rpx;
+  display: block;
+}
+
+.user_list{
+  width: 100%;
+  border-top: 1px #cccccc solid;
+}
+.clearfix::after{
+  content: '';
+  display: table;
+  clear: both;
+  zoom: 1;
+}
+
+.user_list text:nth-child(1){
+  float: right;
+  display: block;
+  width: 75%;
+  padding: 30rpx 0rpx 30rpx 15%;
+  
+}
+.user_list text:nth-child(2){
+  float: right;
+  display: block;
+  width: 77%;
+  padding: 36rpx 40rpx ;
+  font-size: 15px;
+  font-family:YouYuan;
+}
+.user_end{
+  color: black;
+  padding: 8rpx 0rpx;
+  width: 90%;
+  border-top: 1px #cccccc solid;
+  font-size: 15px;
+  font-family:YouYuan;
+}
+.clearfix image{
+  height: 25px;
+  width: 25px;
+  margin-left: 25rpx;
+  padding: 30rpx 0rpx ;
+}
+.icon_{
+  float: right;
+  display: block;
+  width: 77%;
+  padding: 30rpx 0rpx ;
+}

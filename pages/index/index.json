@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "navigationBarTitleText": "真题试题",
+  "usingComponents": {
+    "van-notice-bar": "../../dist/notice-bar/index"
+  }
 }
