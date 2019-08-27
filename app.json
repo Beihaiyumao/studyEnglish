@@ -5,13 +5,14 @@
     "pages/logs/logs",
     "pages/baiduFanyi/baiduFanyi",
     "pages/user/user",
-    "pages/user/collection",
     "pages/user/changPassword",
     "pages/user/userInfo",
     "pages/user/aboutUs",
     "pages/index/siji",
     "pages/index/liuji",
-    "pages/index/zfDetails"
+    "pages/index/zfDetails",
+    "pages/index/listenAndRead",
+    "pages/user/myCollection"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -147,7 +147,7 @@ Page({
  */
   myCollection: function () {
     wx.navigateTo({
-      url: '../user/collection',
+      url: '../user/myCollection',
     })
   },
 

@@ -109,23 +109,49 @@ Page({
    * 收藏
    */
   collectionZF:function(){
+    var that=this;
     console.log(this.data.comId)
-    wx.request({
-      url: urlPath + '/composition/collection',
-      method: 'GET',
-      data: {
-        userId: wx.getStorageSync('userId'),
-        compositionId:this.data.comId,
-        type: 0,
-      },
-      success: function (res) {
-        console.log(res.data);
-        if (res.data.code == 100) {
-          wx.showToast({
-            title: '收藏成功',
-          })
+    if(this.data.collectionState==true){
+      wx.request({
+        url: urlPath + '/user/deleteMyCollection',
+        method: 'GET',
+        data: {
+          userId: wx.getStorageSync('userId'),
+          compositionId: this.data.comId,
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.code == 100) {
+            that.setData({
+              collectionState: false,
+            })
+            wx.showToast({
+              title: '取消收藏成功',
+            })
+          }
         }
-      }
-    })
-  }
+      })
+    }else{
+      wx.request({
+        url: urlPath + '/composition/collection',
+        method: 'GET',
+        data: {
+          userId: wx.getStorageSync('userId'),
+          compositionId: this.data.comId,
+          type: 0,
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.code == 100) {
+            that.setData({
+              collectionState: true,
+            })
+            wx.showToast({
+              title: '收藏成功',
+            })
+          }
+        }
+      })
+    }
+  },
 })
