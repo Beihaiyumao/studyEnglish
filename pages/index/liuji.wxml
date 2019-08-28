@@ -1,2 +1,22 @@
-<!--pages/index/liuji.wxml-->
-<text>pages/index/liuji.wxml</text>
+<view>
+  <van-row>
+    <van-col span="4">
+      <van-badge-group active="{{ type }}" bind:change="onChange">
+        <van-badge title="听力" />
+        <van-badge title="阅读理解" />
+        <van-badge title="翻译" />
+        <van-badge title="作文" color="red" />
+      </van-badge-group>
+    </van-col>
+    <van-col span="17" offset="2">
+      <scroll-view scroll-y="true" scroll-x="false" style="height: 562px">
+        <van-collapse value="{{ activeNames }}">
+          <view wx:for="{{resultList}}" wx:for-item='item' wx:key='key' class='list'>
+            <van-collapse-item title="{{item.title}}" name="2" icon="edit" id="{{item.compositionId}}" bindtap='gotoDetail' >
+            </van-collapse-item>
+          </view>
+        </van-collapse>
+      </scroll-view>
+    </van-col>
+  </van-row>
+</view>

@@ -6,9 +6,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    questionList:[],
+    content:'',
+    title:'',
+    examType:1,
+    author:'小编',
+    redio:'',
   },
-
+  onChange(event) {
+    this.setData({
+      radio: event.detail,
+    });
+    console.log(event.detail)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,16 +28,24 @@ Page({
 
     });
     console.log(this.data.comId);
-    this.getDetailInfo();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onReady: function (e) {
+    this.audioCtx = wx.createAudioContext('myAudio');
+    this.getDetailInfo();
   },
-
+  audioPlay: function () {
+    this.audioCtx.play()
+  },
+  audioPause: function () {
+    this.audioCtx.pause()
+  },
+  audioStart: function () {
+    this.audioCtx.seek(0)
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -82,17 +100,19 @@ Page({
 
       method: "GET", //get为默认方法/POST
       data: {
-       // userId: wx.getStorageSync('userId'),
+        userId: wx.getStorageSync('userId'),
         exQuId: this.data.comId,
       },
       success: function (res) {
         console.log(res);
         if (res.data.code == 100) {
           that.setData({
-            // title: res.data.object.title,
+             title: res.data.object.examQuestion.title,
             // introducer: res.data.object.introducer,
-            // content: res.data.object.content,
-            // collectionState: res.data.object.collectionState,
+            content: res.data.object.examQuestion.content,
+            collectionState: res.data.object.examQuestion.collectionState,
+            questionList: res.data.object.questionList,
+            examType:res.data.object.examQuestion.examType,
           })
         }
         else {
@@ -105,4 +125,54 @@ Page({
       }
     })
   },
+  /**
+    * 收藏
+    */
+  collectionZF: function () {
+    var that = this;
+    console.log(this.data.comId)
+    if (this.data.collectionState == true) {
+      wx.request({
+        url: urlPath + '/user/deleteMyCollection',
+        method: 'GET',
+        data: {
+          userId: wx.getStorageSync('userId'),
+          compositionId: this.data.comId,
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.code == 100) {
+            that.setData({
+              collectionState: false,
+            })
+            wx.showToast({
+              title: '取消收藏成功',
+            })
+          }
+        }
+      })
+    } else {
+      wx.request({
+        url: urlPath + '/composition/collection',
+        method: 'GET',
+        data: {
+          userId: wx.getStorageSync('userId'),
+          compositionId: this.data.comId,
+          type: 1,
+        },
+        success: function (res) {
+          console.log(res.data);
+          if (res.data.code == 100) {
+            that.setData({
+              collectionState: true,
+            })
+            wx.showToast({
+              title: '收藏成功',
+            })
+          }
+        }
+      })
+    }
+  },
+
 })

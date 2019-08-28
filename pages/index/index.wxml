@@ -28,7 +28,7 @@
   </div>
   <div class="column">
     <span class="item">
-      <view>
+      <view bindtap='weiwandaixu'>
         <view class="item">
           <image class='denp' mode='widthFix ' src='/images/index/weiwan.jpg ' mode='widthFix'></image>
         </view>

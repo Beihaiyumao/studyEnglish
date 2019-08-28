@@ -1,2 +1,45 @@
 <!--pages/index/listenAndRead.wxml-->
-<text>pages/index/listenAndRead.wxml</text>
+<van-panel title="{{title}}" desc="{{introducer}}" use-footer-slot>
+  <view style='margin-left: 50rpx; margin-right:50rpx;margin-top:50rpx' wx:if="{{examType==1}}">{{content}}</view>
+  <view wx:if="{{examType==0}}" style='margin-left: 49px; margin-right:50rpx;margin-top:16px'>
+    <audio poster="{{poster}}" name="{{title}}" author="{{author}}" src="http://localhost:8080/{{content}}" id="myAudio" controls style=''></audio>
+    <view style='margin-top:15px;'>
+      <van-button plain type="primary" bindtap="audioPlay">播放</van-button>
+      <van-button plain type="warning" bindtap="audioPause" style='margin-left:50px;'>暂停</van-button>
+      <van-button plain type="danger" bindtap="audioStart" style='margin-left:50px;'>回到开头</van-button>
+    </view>
+
+  </view>
+  <view slot="footer" wx:if="{{collectionState}}">
+    <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" color='#C00000' />
+    <view style='text-align:center;margin-top:30rpx'>
+      <van-button type="primary" size="large">提交答案</van-button>
+    </view>
+
+  </view>
+  <view slot="footer" wx:if="{{!collectionState}}">
+    <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" />
+       <view style='text-align:center;margin-top:30rpx'>
+      <van-button type="primary" size="large">提交答案</van-button>
+    </view>
+  </view>
+
+  <view wx:for="{{questionList}}" wx:for-item='item' wx:key='key'  style='margin-left: 50rpx; margin-right:50rpx;margin-top:50rpx'>
+    <text>{{item.content}}</text>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <view wx:for="{{item.optionList}}" wx:for-item='item' wx:key='key' style='margin-top:30rpx'>
+        <van-radio name="{{item.optionId}}">{{item.content}}</van-radio>
+      </view>
+    </van-radio-group>
+    <!-- <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-cell-group>
+        <view wx:for="{{item.optionList}}" wx:for-item='item' wx:key='key' class='list'>
+          <van-cell title="{{item.content}}" value-class="value-class" clickable data-name="1" bind:click="onClick">
+          </van-cell>
+        </view>
+
+      </van-cell-group>
+    </van-radio-group> -->
+  </view>
+
+</van-panel>
