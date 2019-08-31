@@ -2,7 +2,7 @@
 <view class='user_top'>
   <image class='user_image' src='/images/user/user_background.jpg' style='width:100%;'></image>
   <view bindtap='userInfo' class='user_head' style=''>
-    <image src='http://localhost:8080/{{headPage}}'></image>
+    <image src='http://localhost:8097/{{headPage}}'></image>
     <text>{{username}}</text>
   </view>
   <view bindtap="myCollection" class='user_list mt60 clearfix'>

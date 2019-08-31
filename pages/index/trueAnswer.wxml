@@ -1,0 +1,9 @@
+<!--pages/index/trueAnswer.wxml-->
+<view wx:for="{{answerList}}" wx:for-item='item' wx:key='key'style='margin-left: 50rpx; margin-right:50rpx;'>
+<van-panel >
+  <view style="margin-top:50rpx">问题：{{item.questionTitle}}</view>
+</van-panel>
+<van-panel >
+  <view style="margin-top:50rpx">答案：{{item.trueOption}}</view>
+</van-panel>
+</view>

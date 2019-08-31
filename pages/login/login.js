@@ -112,4 +112,11 @@ Page({
       }
     })
   },
+  onLoad:function(){
+    if ((wx.getStorageSync('userId') != "")){
+      wx.switchTab({
+        url: '../index/index'
+      });
+    }
+  }
 })

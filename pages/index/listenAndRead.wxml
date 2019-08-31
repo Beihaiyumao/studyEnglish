@@ -13,13 +13,13 @@
   <view slot="footer" wx:if="{{collectionState}}">
     <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" color='#C00000' />
       <view style='text-align:center;margin-top:30rpx' wx:if="{{isLastPage}}">
-        <van-button type="primary" size="large">查看答案</van-button>
+        <van-button type="primary" size="large" bindtap='lookTrueAnswer'>查看答案</van-button>
       </view>
   </view>
   <view slot="footer" wx:if="{{!collectionState}}">
     <van-icon name="star-o" size="25px" custom-style="margin-left:620rpx;margin-top:20rpx" bind:click="collectionZF" />
     <view style='text-align:center;margin-top:30rpx' wx:if="{{isLastPage}}">
-      <van-button type="primary" size="large">查看答案</van-button>
+      <van-button type="primary" size="large" bindtap='lookTrueAnswer'>查看答案</van-button>
     </view>
   </view>
 

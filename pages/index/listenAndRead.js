@@ -13,14 +13,17 @@ Page({
     author: '小编',
     redio: '',
     currentPage: 1,
-    isFirstPage:true,
-    isLastPage:false,
-    total:0,
+    isFirstPage: true,
+    isLastPage: false,
+    total: 0,
   },
+  /**
+   * 选择的选项
+   */
   onChange(event) {
     this.setData({
       radio: event.detail,
-      userChose:event.detail,
+      userChose: event.detail,
     });
     console.log(event.detail)
   },
@@ -34,7 +37,14 @@ Page({
     });
     console.log(this.data.comId);
   },
-
+  /**
+   * 查看答案
+   */
+  lookTrueAnswer: function() {
+    wx.navigateTo({
+      url: '/pages/index/trueAnswer?comId=' + this.data.comId,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -43,12 +53,21 @@ Page({
     this.getExamQuestionTG();
     this.getExamQuestionWT();
   },
+  /**
+   * 播放
+   */
   audioPlay: function() {
     this.audioCtx.play()
   },
+  /**
+   * 暂停
+   */
   audioPause: function() {
     this.audioCtx.pause()
   },
+  /**
+   * 回到开头
+   */
   audioStart: function() {
     this.audioCtx.seek(0)
   },
@@ -119,7 +138,7 @@ Page({
             collectionState: res.data.object.collectionState,
             // questionList: res.data.object.questionList,
             examType: res.data.object.examType,
-           
+
           })
         } else {
           wx.showToast({ //这里提示失败原因
@@ -131,6 +150,9 @@ Page({
       }
     })
   },
+  /**
+   * 获取问题列表
+   */
   getExamQuestionWT: function() {
     var that = this;
     wx.request({
@@ -148,9 +170,9 @@ Page({
         console.log(res);
         that.setData({
           questionList: res.data.list,
-          isFirstPage:res.data.isFirstPage,
-          isLastPage:res.data.isLastPage,
-          total:res.data.total,
+          isFirstPage: res.data.isFirstPage,
+          isLastPage: res.data.isLastPage,
+          total: res.data.total,
           trueOptionId: res.data.list.trueOptionId,
         })
       }
@@ -206,16 +228,16 @@ Page({
     }
   },
   /**
-   * 上一页
+   * 上一题
    */
-  turnUpPage:function(){
-    if(this.data.currentPage>=1){
+  turnUpPage: function() {
+    if (this.data.currentPage >= 1) {
       this.setData({
         currentPage: this.data.currentPage - 1,
       })
-    }else{
+    } else {
       this.setData({
-        currentPage:1,
+        currentPage: 1,
       })
     }
     this.getExamQuestionWT();
@@ -223,14 +245,14 @@ Page({
   /**
    * 下一题
    */
-  turnDownPage:function(e){
+  turnDownPage: function(e) {
     console.log(e.currentTarget.id);
-    if(this.data.currentPage<this.data.total){
-      if(this.data.userChose!=e.currentTarget.id){
+    if (this.data.currentPage < this.data.total) {
+      if (this.data.userChose != e.currentTarget.id) {
         wx.showToast({
           title: '答案错误',
         })
-      }else{
+      } else {
         wx.showToast({
           title: '恭喜回答正确',
         })
