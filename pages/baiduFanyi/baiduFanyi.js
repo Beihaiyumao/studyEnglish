@@ -8,7 +8,7 @@ Page({
   data: {
     active: 1, //默认汉译英
     resultList: [],
-    show: false,
+    show: false,//翻译结果弹出的显示
   },
 
   /**
@@ -132,6 +132,9 @@ Page({
       active: event.detail.index + 1
     })
   },
+  /**
+   * 关闭弹窗
+   */
   onClose() {
     this.setData({
       show: false

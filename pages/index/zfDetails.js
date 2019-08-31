@@ -6,17 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    comId:'',
-    title:'',
-    introducer:'',
-    content:'',
-    collectionState:false,
+    comId: '',
+    title: '',
+    introducer: '',
+    content: '',
+    collectionState: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       comId: options.comId,
 
@@ -27,55 +27,58 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  getDetailInfo:function(){
-    var that=this;
+  /**
+   * 获取作文和翻译内容
+   */
+  getDetailInfo: function() {
+    var that = this;
     wx.request({
-      url: urlPath + '/composition/selectComById' , //请求地址
+      url: urlPath + '/composition/selectComById', //请求地址
       header: { //请求头
         "Content-Type": "applciation/json"
       },
@@ -85,17 +88,16 @@ Page({
         userId: wx.getStorageSync('userId'),
         comId: this.data.comId,
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res);
-        if(res.data.code==100){
+        if (res.data.code == 100) {
           that.setData({
-            title:res.data.object.title,
-            introducer:res.data.object.introducer,
-            content:res.data.object.content,
-            collectionState:res.data.object.collectionState,
+            title: res.data.object.title,
+            introducer: res.data.object.introducer,
+            content: res.data.object.content,
+            collectionState: res.data.object.collectionState,
           })
-        }
-        else{
+        } else {
           wx.showToast({ //这里提示失败原因
             title: '未知错误',
             icon: 'loading',
@@ -108,10 +110,12 @@ Page({
   /**
    * 收藏
    */
-  collectionZF:function(){
-    var that=this;
+  collectionZF: function() {
+    var that = this;
     console.log(this.data.comId)
-    if(this.data.collectionState==true){
+    //判断用户是否已经收藏
+    if (this.data.collectionState == true) {
+      //已收藏
       wx.request({
         url: urlPath + '/user/deleteMyCollection',
         method: 'GET',
@@ -119,7 +123,7 @@ Page({
           userId: wx.getStorageSync('userId'),
           compositionId: this.data.comId,
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res.data);
           if (res.data.code == 100) {
             that.setData({
@@ -131,7 +135,8 @@ Page({
           }
         }
       })
-    }else{
+    } else {
+      //未收藏
       wx.request({
         url: urlPath + '/composition/collection',
         method: 'GET',
@@ -140,7 +145,7 @@ Page({
           compositionId: this.data.comId,
           type: 0,
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res.data);
           if (res.data.code == 100) {
             that.setData({

@@ -6,22 +6,22 @@ Page({
    */
   data: {
     isLogin: true,
-    inputName:'',
-    inputPassword:'',
-    userId:'',
+    inputName: '',
+    inputPassword: '',
+    userId: '',
   },
   //获取用户输入的值a
   inputName: function(e) {
     this.setData({
-      inputName : e.detail.value
+      inputName: e.detail.value
     })
-    
+
   },
   //获取用户输入的值b
   inputPassword: function(e) {
-   this.setData({
-     inputPassword : e.detail.value
-   })
+    this.setData({
+      inputPassword: e.detail.value
+    })
     console.log("输入的密码：" + this.data.inputPassword);
   },
 
@@ -37,7 +37,7 @@ Page({
     var isrightful = that.checkInput();
     if (isrightful) {
       wx.request({
-        url: urlPath+'/user/login',
+        url: urlPath + '/user/login',
         header: {
           "Content-Type": "application/json"
         },
@@ -83,7 +83,7 @@ Page({
     var emailTrue = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
     if (this.data.inputName == "" || this.data.inputName == null ||
       this.data.inputName == undefined || !emailTrue.test(this.data.inputName)) {
-        
+
       this.showErrorToastUtils('请输入正确的邮箱');
       return false;
     } else if (this.data.inputPassword == "" || this.data.inputPassword == null || this.data.inputPassword == undefined) {
@@ -112,8 +112,11 @@ Page({
       }
     })
   },
-  onLoad:function(){
-    if ((wx.getStorageSync('userId') != "")){
+  /**
+   * 判断用户是否已经登陆了
+   */
+  onLoad: function() {
+    if ((wx.getStorageSync('userId') != "")) {
       wx.switchTab({
         url: '../index/index'
       });

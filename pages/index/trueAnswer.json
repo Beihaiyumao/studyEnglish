@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "答案详情",
   "usingComponents": {
     "van-panel": "../../dist/panel/index",
     "van-field": "../../dist/field/index"

@@ -21,6 +21,9 @@ Page({
       this.getExamQues();
     }
   },
+  /**
+   * 判断是翻译和作文 还是听力和阅读
+   */
   onChange(event) {
     this.setData({
       type: event.detail

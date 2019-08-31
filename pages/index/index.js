@@ -22,6 +22,9 @@ Page({
       url: '../index/liuji',
     })
   },
+  /**
+   * 未完待续
+   */
   weiwandaixu:function(){
     wx.showToast({
       title: '正在建设ING....',

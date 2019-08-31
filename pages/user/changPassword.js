@@ -12,16 +12,25 @@ Page({
     tnewPassword: '',
     userId: '',
   },
+  /**
+   * 获取旧密码
+   */
   oldPassword: function(e) {
     this.setData({
       oldPassword: e.detail.value
     })
   },
+  /**
+   * 获取输入的新密码
+   */
   newPassword: function(e) {
     this.setData({
       newPassword: e.detail.value
     })
   },
+  /**
+   * 获取输入的新密码
+   */
   tnewPassword: function(e) {
     this.setData({
       tnewPassword: e.detail.value
@@ -97,7 +106,6 @@ Page({
           oldPassword: this.data.oldPassword,
           tnewPassword: this.data.tnewPassword,
           userId: wx.getStorageSync('userId'),
-
         },
         success: function(e) {
           if (e.data.code == 100) {
@@ -108,6 +116,7 @@ Page({
             });
             wx.clearStorageSync("userId");
             wx.clearStorageSync();
+            //修改成功后退出登陆，并且跳转登录页面
             wx.reLaunch({
               url: '../login/login',
             })
